@@ -1,4 +1,5 @@
 import requests
+
 from .utils import filter_list
 
 
@@ -11,7 +12,7 @@ class WebHook:
         self.headers = headers
         self.url = 'https://api.civo.com/v2/webhooks'
 
-    def create(self, events: str, url: str, secret: str = None) -> object:
+    def create(self, events: str, url: str, secret: str = None) -> dict:
         """
         Function to create a new webhook
         :param events: This is a list of events that the webhook should be triggered for.
@@ -29,7 +30,7 @@ class WebHook:
 
         return r.json()
 
-    def list(self, filter: str = None) -> object:
+    def search(self, filter: str = None) -> dict:
         """
         Function to listing webhooks
         :param filter: Filter json object the format is 'id:6224cd2b-d416-4e92-bdbb-db60521c8eb9',
@@ -45,7 +46,7 @@ class WebHook:
 
         return r.json()
 
-    def test(self, id: str) -> object:
+    def test(self, id: str) -> dict:
         """
         Function to test a webhook
         :param id: id of webhook object
@@ -55,7 +56,7 @@ class WebHook:
 
         return r.json()
 
-    def update(self, id: str, events: str, url: str, secret: str = None) -> object:
+    def update(self, id: str, events: str, url: str, secret: str = None) -> dict:
         """
         Function to update a new webhook
         :param id: id of the webhook object
@@ -74,7 +75,7 @@ class WebHook:
 
         return r.json()
 
-    def delete(self, id: str) -> object:
+    def delete(self, id: str) -> dict:
         """
         Function to delete a new webhook
         :param id: id of the webhook object

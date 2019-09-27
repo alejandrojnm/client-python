@@ -1,4 +1,5 @@
 import requests
+
 from .utils import filter_list
 
 
@@ -13,7 +14,7 @@ class Ssh:
         self.headers = headers
         self.url = 'https://api.civo.com/v2/sshkeys'
 
-    def create(self, name: str, public_key: str) -> object:
+    def create(self, name: str, public_key: str) -> dict:
         """
         Function to uploading a SSH public key
         :param name: Name of the key
@@ -25,7 +26,7 @@ class Ssh:
 
         return r.json()
 
-    def lists(self, filter: str = None) -> object:
+    def search(self, filter: str = None) -> dict:
         """
         Function to listing the SSH public keys
         :param filter: Filter json object the format is 'id:6224cd2b-d416-4e92-bdbb-db60521c8eb9',
@@ -40,7 +41,7 @@ class Ssh:
 
         return r.json()
 
-    def retrieving(self, id: str) -> object:
+    def retrieving(self, id: str) -> dict:
         """
         Function to retrieving a SSH key
         :param id: id of the objects
@@ -50,7 +51,7 @@ class Ssh:
 
         return r.json()
 
-    def updating(self, id: str, name: str) -> object:
+    def updating(self, id: str, name: str) -> dict:
         """
         Function to updating a SSH key
         :param id: id of the objects
@@ -62,7 +63,7 @@ class Ssh:
 
         return r.json()
 
-    def delete(self, id: str) -> object:
+    def delete(self, id: str) -> dict:
         """
         Function to removing a SSH key
         :return: object json
